@@ -608,57 +608,57 @@
 #loginScreen::after{right:-100px;transform:translateY(-50%) scaleX(-1)}
 
 .tb-login-card{
-  width:100%;max-width:380px;
+  width:100%;max-width:640px;
   background:rgba(255,255,255,.05);
   backdrop-filter:blur(22px) saturate(120%);
   -webkit-backdrop-filter:blur(22px) saturate(120%);
   border:1px solid rgba(255,255,255,.10);
-  border-radius:22px;
-  padding:40px 36px 34px;
+  border-radius:26px;
+  padding:64px 56px 52px;
   text-align:center;
   box-shadow:0 40px 90px -28px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.06);
   position:relative;
   z-index:1;
 }
 .tb-login-mark{
-  width:74px;height:74px;margin:0 auto 14px;
+  width:124px;height:124px;margin:0 auto 20px;
   display:flex;align-items:center;justify-content:center;
   filter:drop-shadow(0 8px 14px rgba(0,0,0,.45));
 }
 .tb-login-mark img{width:100%;height:100%;object-fit:contain}
 
 .tb-login-card h1{
-  margin:0 0 22px;
+  margin:0 0 34px;
   font-family:"Poppins",var(--ui);
-  font-size:22px;font-weight:700;letter-spacing:.14em;
+  font-size:36px;font-weight:700;letter-spacing:.14em;
   color:#F4F1E7;text-transform:uppercase;
 }
 
-.tb-divider{display:flex;align-items:center;gap:12px;margin:0 0 24px}
+.tb-divider{display:flex;align-items:center;gap:18px;margin:0 0 36px}
 .tb-divider .ln{flex:1;height:1px;background:rgba(255,255,255,.16)}
-.tb-divider img{width:13px;height:13px;opacity:.75}
+.tb-divider img{width:20px;height:20px;opacity:.75}
 
-.tb-field{margin-bottom:16px;text-align:left}
+.tb-field{margin-bottom:24px;text-align:left}
 .tb-field label{
-  display:block;margin-bottom:7px;
-  font-size:12px;font-weight:500;letter-spacing:.02em;
+  display:block;margin-bottom:10px;
+  font-size:15px;font-weight:500;letter-spacing:.02em;
   color:rgba(233,236,224,.75);
 }
 .tb-input-wrap{position:relative;display:flex;align-items:center}
 .tb-input-wrap svg.tb-ic{
-  position:absolute;left:13px;
-  width:16px;height:16px;color:rgba(220,226,204,.55);
+  position:absolute;left:18px;
+  width:20px;height:20px;color:rgba(220,226,204,.55);
   pointer-events:none;
 }
 #loginScreen input{
-  width:100%;padding:12px 14px 12px 38px;border-radius:10px;box-sizing:border-box;
+  width:100%;padding:16px 18px 16px 48px;border-radius:14px;box-sizing:border-box;
   border:1px solid rgba(255,255,255,.13);
   background:rgba(6,10,4,.28);
   color:#F1EFE4;
-  font-family:var(--ui);font-size:14px;outline:none;
+  font-family:var(--ui);font-size:17px;outline:none;
   transition:border-color .15s ease,box-shadow .15s ease,background .15s ease;
 }
-.tb-field-pass input{padding-right:42px}
+.tb-field-pass input{padding-right:54px}
 #loginScreen input::placeholder{color:rgba(224,228,212,.38)}
 #loginScreen input:focus{
   border-color:rgba(156,178,115,.6);
@@ -666,21 +666,21 @@
   background:rgba(6,10,4,.4);
 }
 .tb-eye{
-  position:absolute;right:9px;
-  width:27px;height:27px;display:flex;align-items:center;justify-content:center;
+  position:absolute;right:13px;
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
   background:none;border:0;color:rgba(220,226,204,.55);cursor:pointer;padding:0;
   border-radius:6px;
 }
 .tb-eye:hover{color:#F1EFE4;background:rgba(255,255,255,.06)}
-.tb-eye svg{width:16px;height:16px}
+.tb-eye svg{width:20px;height:20px}
 
 .tb-login-btn{
-  width:100%;margin-top:6px;padding:13px 16px;border-radius:11px;border:1px solid rgba(255,255,255,.12);
+  width:100%;margin-top:10px;padding:18px 20px;border-radius:14px;border:1px solid rgba(255,255,255,.12);
   background:linear-gradient(180deg,#71905039,#4c6830);
   background:linear-gradient(180deg,#75965035,#4C6830);
   background-color:#5C7A3C;
   background-image:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0) 40%);
-  color:#fff;font-family:var(--ui);font-size:14.5px;font-weight:700;
+  color:#fff;font-family:var(--ui);font-size:17px;font-weight:700;
   letter-spacing:.03em;cursor:pointer;
   box-shadow:0 10px 24px -10px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.2);
   transition:filter .15s ease,transform .1s ease;
@@ -690,13 +690,13 @@
 .tb-login-btn:disabled{opacity:.6;cursor:default}
 
 #loginError{
-  margin-top:14px;min-height:14px;
-  font-size:12px;color:#E6A5A5;
+  margin-top:18px;min-height:18px;
+  font-size:14px;color:#E6A5A5;
 }
 
 .tb-forgot{
-  display:inline-block;margin-top:18px;
-  font-size:12.5px;color:rgba(228,232,216,.55);
+  display:inline-block;margin-top:24px;
+  font-size:15px;color:rgba(228,232,216,.55);
   background:none;border:0;cursor:pointer;font-family:var(--ui);
   text-decoration:none;padding:0;
 }
@@ -983,6 +983,7 @@
     <div class="aba" id="abaLocal">
       <div class="group">
         <p class="eyebrow">Localização</p>
+        <p class="hint" id="locModoHint"></p>
         <label class="f" for="locRua">Rua</label>
         <input type="text" id="locRua" maxlength="3" autocomplete="off" placeholder="A" style="text-transform:uppercase">
         <label class="f" for="locQtd" style="margin-top:10px">Quantas etiquetas</label>
@@ -990,6 +991,27 @@
         <label class="f" for="locIni" style="margin-top:10px">Começar em <span style="opacity:.7">(opcional)</span></label>
         <input type="number" id="locIni" min="1" max="9999" value="1" autocomplete="off">
         <p class="hint" id="locResumo"></p>
+      </div>
+
+      <div class="group" id="grpTamanhoLoc" style="display:none">
+        <p class="eyebrow">Tamanho do desenho</p>
+        <label class="f">Geral</label>
+        <div class="stepper">
+          <button type="button" id="menosLC" aria-label="Diminuir">−</button>
+          <div class="val"><input type="number" id="escalaLC" value="100" step="5"></div>
+          <button type="button" id="maisLC" aria-label="Aumentar">+</button>
+        </div>
+        <input type="range" id="escalaLCRange" min="20" max="200" step="1" value="100">
+
+        <label class="f" style="margin-top:16px">Altura</label>
+        <div class="stepper">
+          <button type="button" id="menosLCA" aria-label="Diminuir altura">−</button>
+          <div class="val"><input type="number" id="escalaLCA" value="100" step="5"></div>
+          <button type="button" id="maisLCA" aria-label="Aumentar altura">+</button>
+        </div>
+        <input type="range" id="escalaLCARange" min="20" max="200" step="1" value="100">
+        <p class="hint">Ajusta o tamanho do QR code e do número dentro da etiqueta de 122 × 100 mm. Sem limite nos dois.</p>
+        <button class="btn wide" type="button" id="resetLC" style="margin-top:10px">Voltar para 100%</button>
       </div>
 
       <div class="group">
@@ -18961,13 +18983,68 @@ function svgEtiquetaLoc(cod){
     '</svg>';
 }
 
+/* ---------- etiqueta "Loja Conceito": QR + número, formato 122 x 100 mm ----------
+   Ativa sozinha quando o título da etiqueta (aba Etiqueta de produtos, "Título da
+   etiqueta") está em "LOJA CONCEITO" — a etiqueta de localização vira esse layout
+   automaticamente, sem precisar de outro controle. Layout: só o QR code e, embaixo
+   dele, o número de referência — os dois contornados por uma moldura arredondada
+   que dá a margem ao redor do conjunto. A folha continua fixa em 122 x 100 mm,
+   como a etiqueta maior de produto; o que muda de tamanho é o desenho por dentro. */
+function svgEtiquetaConceito(cod, escG, escA){
+  const W = 122, H = 100;
+  const eg = Math.max(.2, (escG || 100) / 100);
+  const ea = Math.max(.2, (escA || 100) / 100);
+  const m  = 4;                                   /* moldura até a borda da etiqueta */
+  const rx = 8;
+  const padIn = 10;                                /* respiro da moldura até o conteúdo */
+  const areaW = W - 2 * m - 2 * padIn;
+  const areaH = H - 2 * m - 2 * padIn;
+  const qr   = Math.min(areaW, areaH * .72) * eg;   /* lado do QR */
+  const gap  = 6 * ea;
+  const fRef = 13 * eg * ea;
+  const contH = qr + gap + fRef * 1.1;
+  const startY = m + padIn + (areaH - contH) / 2;
+  const qrX = (W - qr) / 2;
+  const qrY = startY;
+  const textY = qrY + qr + gap + fRef * .85;
+
+  let q = null;
+  for(let t = 1; t <= 12 && !q; t++){
+    try{ const x = qrcode(t, 'M'); x.addData(String(cod)); x.make(); q = x; }catch(e){}
+  }
+  const n = q ? q.getModuleCount() : 21;
+  let d = '';
+  if(q){
+    for(let r = 0; r < n; r++)
+      for(let c = 0; c < n; c++)
+        if(q.isDark(r, c)) d += 'M' + c + ' ' + r + 'h1v1h-1z';
+  }
+  const f = x => (+x).toFixed(2);
+
+  return '<svg viewBox="0 0 ' + f(W) + ' ' + f(H) + '" xmlns="http://www.w3.org/2000/svg">' +
+    '<rect x="' + f(m) + '" y="' + f(m) + '" width="' + f(W - 2 * m) + '" height="' + f(H - 2 * m) + '" rx="' + f(rx) +
+      '" fill="#fff" stroke="#C4CCD5" stroke-width=".5"/>' +
+    '<g transform="translate(' + f(qrX) + ',' + f(qrY) + ') scale(' + (qr / n).toFixed(4) + ')">' +
+      '<path d="' + d + '" fill="#0E110D"/></g>' +
+    '<text x="' + f(W / 2) + '" y="' + f(textY) + '" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" ' +
+      'font-size="' + f(fRef) + '" font-weight="700" fill="#0E110D" letter-spacing=".06">' + cod + '</text>' +
+    '</svg>';
+}
+
+let escalaConceito = 100, escalaConceitoA = 100;
+
+function modoConceito(){ return marcaAtual === 'LOJA CONCEITO'; }
+
 const MAX_PREVIA = 60;
 
 function desenharLoc(){
   const { lista } = codigosLoc();
   const grade = $('locGrade');
+  const conceito = modoConceito();
   const mostra = lista.slice(0, MAX_PREVIA);
-  grade.innerHTML = mostra.map(c => '<div class="loc-et">' + svgEtiquetaLoc(c) + '</div>').join('');
+  grade.innerHTML = conceito
+    ? mostra.map(c => '<div class="loc-et">' + svgEtiquetaConceito(c, escalaConceito, escalaConceitoA) + '</div>').join('')
+    : mostra.map(c => '<div class="loc-et">' + svgEtiquetaLoc(c) + '</div>').join('');
   $('locVazio').style.display = lista.length > MAX_PREVIA ? 'block' : 'none';
   $('locVazio').textContent = lista.length > MAX_PREVIA
     ? 'Mostrando as ' + MAX_PREVIA + ' primeiras. As ' + lista.length.toLocaleString('pt-BR') + ' entram no ZPL.'
@@ -18975,13 +19052,27 @@ function desenharLoc(){
   const resumo = lista.length
     ? lista.length.toLocaleString('pt-BR') + ' etiquetas · de ' + lista[0] + ' a ' + lista[lista.length - 1]
     : 'Nada para gerar.';
-  const medida = LOC.larg + ' × ' + LOC.alt + ' mm, ' + LOC.cols +
-    (LOC.cols > 1 ? ' colunas' : ' coluna');
+  const medida = conceito
+    ? '122 × 100 mm'
+    : LOC.larg + ' × ' + LOC.alt + ' mm, ' + LOC.cols + (LOC.cols > 1 ? ' colunas' : ' coluna');
   $('locSub').textContent = resumo + ' · ' + medida;
   $('locResumo').textContent = resumo;
-  $('locFolha').innerHTML = 'Sai no tamanho real: ' + medida + '. Deixe o driver da impressora com a página em <b>' +
-    larguraFolha().toFixed(1).replace('.0', '') + ' × ' + LOC.alt + ' mm</b>, senão a impressora corta ou desalinha.';
-  $('locGrade').style.gridTemplateColumns = 'repeat(' + Math.min(3, LOC.cols) + ', 1fr)';
+  $('locFolha').innerHTML = conceito
+    ? 'Sai no tamanho real: <b>122 × 100 mm</b>, uma etiqueta por folha — mesmo formato da etiqueta maior de produto.'
+    : 'Sai no tamanho real: ' + medida + '. Deixe o driver da impressora com a página em <b>' +
+      larguraFolha().toFixed(1).replace('.0', '') + ' × ' + LOC.alt + ' mm</b>, senão a impressora corta ou desalinha.';
+  $('locGrade').style.gridTemplateColumns = conceito ? 'repeat(2, 1fr)' : 'repeat(' + Math.min(3, LOC.cols) + ', 1fr)';
+  $('grpTamanhoLoc').style.display = conceito ? 'block' : 'none';
+  $('locAjustes').style.display = conceito ? 'none' : '';
+  if(conceito) $('locConfig').style.display = 'none';
+  $('locModoHint').textContent = conceito
+    ? 'Título atual: LOJA CONCEITO — a etiqueta usa o layout de QR + número, 122 × 100 mm.'
+    : 'Título atual: ' + marcaAtual + '. Para usar o layout de QR + número (122 × 100 mm), troque o título para "LOJA CONCEITO" na aba Etiqueta de produtos.';
+  if(typeof abaAtual !== 'undefined' && abaAtual === 'local'){
+    $('subtitulo').textContent = conceito
+      ? 'Etiqueta de localização · Loja Conceito · 122 × 100 mm'
+      : 'Etiqueta de localização · ' + LOC.larg + ' × ' + LOC.alt + ' mm, ' + LOC.cols + (LOC.cols > 1 ? ' colunas' : ' coluna');
+  }
 }
 
 /* mexer no tamanho da etiqueta menor é coisa de ADM */
@@ -19020,18 +19111,50 @@ $('locAjustes').onclick = ()=>abrirAjuste('locConfig', 'locAjustes');
   $(id).addEventListener('input', ()=>{ clearTimeout(window.__tLoc); window.__tLoc = setTimeout(desenharLoc, 180); });
 });
 
+/* ---------- tamanho do desenho da etiqueta Loja Conceito ----------
+   Mesma lógica da etiqueta maior de produto: a folha continua 122 x 100 mm,
+   só o QR e o número crescem ou encolhem dentro dela. Sem limite nos dois. */
+function aplicarEscalaConceito(g, a){
+  if(g !== undefined) escalaConceito  = Math.max(1, g || 1);
+  if(a !== undefined) escalaConceitoA = Math.max(1, a || 1);
+  $('escalaLC').value  = Math.round(escalaConceito * 10) / 10;
+  $('escalaLCA').value = Math.round(escalaConceitoA * 10) / 10;
+  $('escalaLCRange').value  = Math.min(200, Math.max(20, escalaConceito));
+  $('escalaLCARange').value = Math.min(200, Math.max(20, escalaConceitoA));
+  desenharLoc();
+}
+$('maisLC').onclick   = ()=>aplicarEscalaConceito(escalaConceito + 5);
+$('menosLC').onclick  = ()=>aplicarEscalaConceito(escalaConceito - 5);
+$('maisLCA').onclick  = ()=>aplicarEscalaConceito(undefined, escalaConceitoA + 5);
+$('menosLCA').onclick = ()=>aplicarEscalaConceito(undefined, escalaConceitoA - 5);
+$('escalaLC').addEventListener('input', e=>{ if(e.target.value.trim() === '') return; aplicarEscalaConceito(parseFloat(e.target.value)); });
+$('escalaLCA').addEventListener('input', e=>{ if(e.target.value.trim() === '') return; aplicarEscalaConceito(undefined, parseFloat(e.target.value)); });
+$('escalaLCRange').addEventListener('input',  e=>aplicarEscalaConceito(parseFloat(e.target.value)));
+$('escalaLCARange').addEventListener('input', e=>aplicarEscalaConceito(undefined, parseFloat(e.target.value)));
+$('resetLC').onclick = ()=>aplicarEscalaConceito(100, 100);
+
 /* ---------- impressão pelo navegador, no tamanho real ----------
-   Monta uma folha de 100 mm de largura com 3 etiquetas de 30 x 20 mm por linha,
-   com 3 mm de espaço entre elas — o mesmo passo da bobina. */
+   Padrão: folha de 100 mm de largura com 3 etiquetas de 30 x 20 mm por linha, com
+   3 mm de espaço entre elas — o mesmo passo da bobina.
+   Loja Conceito: uma etiqueta de 122 x 100 mm por folha, igual à etiqueta maior. */
 function montarFolhaLoc(){
   const { lista } = codigosLoc();
+  const conceito = modoConceito();
   const linhas = [];
-  const estiloEt = 'width:' + LOC.larg + 'mm;height:' + LOC.alt + 'mm';
-  for(let i = 0; i < lista.length; i += LOC.cols){
-    const cols = lista.slice(i, i + LOC.cols)
-      .map(c => '<div class="etLoc" style="' + estiloEt + '">' + svgEtiquetaLoc(c) + '</div>').join('');
-    linhas.push('<div class="linhaLoc" style="width:' + larguraFolha() + 'mm;height:' + LOC.alt +
-      'mm;gap:' + LOC.esp + 'mm">' + cols + '</div>');
+  if(conceito){
+    for(let i = 0; i < lista.length; i++){
+      const et = '<div class="etLoc" style="width:122mm;height:100mm">' +
+        svgEtiquetaConceito(lista[i], escalaConceito, escalaConceitoA) + '</div>';
+      linhas.push('<div class="linhaLoc" style="width:122mm;height:100mm">' + et + '</div>');
+    }
+  }else{
+    const estiloEt = 'width:' + LOC.larg + 'mm;height:' + LOC.alt + 'mm';
+    for(let i = 0; i < lista.length; i += LOC.cols){
+      const cols = lista.slice(i, i + LOC.cols)
+        .map(c => '<div class="etLoc" style="' + estiloEt + '">' + svgEtiquetaLoc(c) + '</div>').join('');
+      linhas.push('<div class="linhaLoc" style="width:' + larguraFolha() + 'mm;height:' + LOC.alt +
+        'mm;gap:' + LOC.esp + 'mm">' + cols + '</div>');
+    }
   }
   $('folhaLoc').innerHTML = linhas.join('');
   return lista.length;
@@ -19039,7 +19162,9 @@ function montarFolhaLoc(){
 
 $('locImprimir').onclick = ()=>{
   if(!montarFolhaLoc()) return;
-  $('pgLoc').textContent = '@page{size:' + larguraFolha() + 'mm ' + LOC.alt + 'mm;margin:0}';
+  $('pgLoc').textContent = modoConceito()
+    ? '@page{size:122mm 100mm;margin:0}'
+    : '@page{size:' + larguraFolha() + 'mm ' + LOC.alt + 'mm;margin:0}';
   document.body.classList.add('impLoc');
   window.print();
 };
@@ -19350,6 +19475,8 @@ function aplicarMarca(){
   marcaAtual = $('marcaSel').value;
   $('capBrand').textContent = marcaAtual;
   fitBrand();
+  /* LOJA CONCEITO troca também o layout da etiqueta de localização */
+  if(typeof desenharLoc === 'function' && $('locGrade')) desenharLoc();
 }
 
 let marcaAtual = 'TANIA BULHÕES';
