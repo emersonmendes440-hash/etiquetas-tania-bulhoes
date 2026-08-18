@@ -1,0 +1,36 @@
+{
+  "name": "etiquetas-tania-bulhoes",
+  "productName": "Etiquetas Tania Bulhões",
+  "version": "1.0.0",
+  "description": "Etiquetas de produto e de localização",
+  "main": "main.js",
+  "author": "Tania Bulhões",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64",
+    "dist:portatil": "electron-builder --win portable --x64"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.taniabulhoes.etiquetas",
+    "productName": "Etiquetas Tania Bulhoes",
+    "directories": { "output": "instalador", "buildResources": "build" },
+    "files": ["main.js", "preload.js", "armazenamento.js", "renderer/**", "build/icon.*"],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Etiquetas Tania Bulhoes"
+    }
+  }
+}
