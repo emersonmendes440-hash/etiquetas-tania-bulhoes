@@ -1077,7 +1077,7 @@
       <p class="eyebrow">Produto</p>
       <div class="combo">
         <div id="soGrande1">
-      <label class="f" for="marcaSel">Título da etiqueta</label>
+      <label class="f" for="marcaSel">Filial</label>
       <select class="f2" id="marcaSel" style="margin-bottom:12px">
         <option value="TANIA BULHÕES">TANIA BULHÕES</option>
         <option value="CD OSASCO">CD OSASCO</option>
@@ -1176,9 +1176,14 @@
     </div>
     </div>
     <div class="aba" id="abaLocal">
+      <div class="abas mini" style="margin-top:6px">
+        <button type="button" class="ab on" id="mdPadrao">Padrão<span>30 × 20 mm</span></button>
+        <button type="button" class="ab" id="mdCheck">Com check<span>30 × 20 mm</span></button>
+        <button type="button" class="ab" id="mdConceito">Loja Conceito<span>122 × 100 mm</span></button>
+      </div>
+
       <div class="group">
         <p class="eyebrow">Localização</p>
-        <p class="hint" id="locModoHint"></p>
         <label class="f" for="locRua">Rua</label>
         <input type="text" id="locRua" maxlength="3" autocomplete="off" placeholder="A" style="text-transform:uppercase">
         <label class="f" for="locQtd" style="margin-top:10px">Quantas etiquetas</label>
@@ -1205,7 +1210,6 @@
           <button type="button" id="maisLCA" aria-label="Aumentar altura">+</button>
         </div>
         <input type="range" id="escalaLCARange" min="20" max="200" step="1" value="100">
-        <p class="hint">Aumenta ou reduz a arte inteira — moldura, QR code e número juntos — dentro da folha de 122 × 100 mm. <b>Altura</b> alonga ou encurta só a moldura.</p>
         <p class="found" id="avisoTamLoc"></p>
         <button class="btn wide" type="button" id="resetLC" style="margin-top:10px">Voltar para 100%</button>
       </div>
@@ -1233,8 +1237,6 @@
   <main class="stage">
     <div class="topbar">
       <button type="button" id="verCfg"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.1"/><path d="M19.4 15a1.6 1.6 0 0 0 .32 1.77l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.6 1.6 0 0 0-1.77-.32 1.6 1.6 0 0 0-1 1.47V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 9 19.4a1.6 1.6 0 0 0-1.77.32l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.6 1.6 0 0 0 4.72 15a1.6 1.6 0 0 0-1.47-1H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.6 9a1.6 1.6 0 0 0-.32-1.77l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.6 1.6 0 0 0 9 4.72h.08A1.6 1.6 0 0 0 10 3.25V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.47 1.6 1.6 0 0 0 1.77-.32l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.6 1.6 0 0 0 19.4 9v.08a1.6 1.6 0 0 0 1.47 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg><span>Configurações</span></button>
-      <div class="sep"></div>
-      <button type="button" id="exportar">Exportar arquivo</button>
       <div class="sep"></div>
       <button type="button" id="logoutBtn" class="tb-logout"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg><span>Sair</span></button>
     </div>
@@ -1281,7 +1283,7 @@
       <div class="cfg-corpo">
         <nav class="cfg-nav">
           <button type="button" class="on" data-pane="paneBase">Bases</button>
-          <button type="button" data-pane="paneTitulos">Títulos</button>
+          <button type="button" data-pane="paneTitulos">Filiais</button>
           <button type="button" data-pane="paneUsers">Usuários</button>
           <button type="button" data-pane="paneHist">Histórico</button>
           <button type="button" data-pane="paneTema">Aparência</button>
@@ -1307,13 +1309,12 @@
           </section>
 
           <section class="cfg-pane" id="paneTitulos">
-            <h3>Títulos da etiqueta</h3>
-            <p class="cfg-sub">São as unidades que aparecem no alto da etiqueta maior.</p>
+            <h3>Filiais</h3>
             <div class="hv-list" id="tituloLista"></div>
             <div class="hv-form">
-              <p class="hv-form-t">Incluir título</p>
+              <p class="hv-form-t">Incluir filial</p>
               <div class="hv-campos">
-                <label>Nome da unidade<input type="text" id="tituloNovo" autocomplete="off" placeholder="CD CAMPINAS" style="text-transform:uppercase"></label>
+                <label>Nome da filial<input type="text" id="tituloNovo" autocomplete="off" placeholder="CD CAMPINAS" style="text-transform:uppercase"></label>
                 <button class="btn primary" type="button" id="tituloSalvar">Incluir</button>
               </div>
               <p class="found" id="tituloMsg"></p>
@@ -19179,13 +19180,6 @@ function svgEtiquetaLoc(cod){
     '</svg>';
 }
 
-/* ---------- etiqueta "Loja Conceito": QR + número, formato 122 x 100 mm ----------
-   Ativa sozinha quando o título da etiqueta (aba Etiqueta de produtos, "Título da
-   etiqueta") está em "LOJA CONCEITO" — a etiqueta de localização vira esse layout
-   automaticamente, sem precisar de outro controle. Layout: só o QR code e, embaixo
-   dele, o número de referência — os dois contornados por uma moldura arredondada
-   que dá a margem ao redor do conjunto. A folha continua fixa em 122 x 100 mm,
-   como a etiqueta maior de produto; o que muda de tamanho é o desenho por dentro. */
 let conceitoNoLimite = false;
 
 function svgEtiquetaConceito(cod, escG, escA){
@@ -19252,7 +19246,71 @@ function svgEtiquetaConceito(cod, escG, escA){
 
 let escalaConceito = 100, escalaConceitoA = 100;
 
-function modoConceito(){ return marcaAtual === 'LOJA CONCEITO'; }
+/* ---------- modelo da etiqueta de localização ----------
+   padrao   = 30 x 20, QR + QTD + NOME
+   check    = 30 x 20, QR e número à esquerda, dois quadros de check à direita
+   conceito = 122 x 100, QR + número dentro da moldura preta                  */
+let modeloLoc = 'padrao';
+
+function modoConceito(){ return modeloLoc === 'conceito'; }
+
+function svgEtiquetaCheck(cod){
+  const W = LOC.larg, H = LOC.alt;
+  const m = Math.min(W, H) * .075;
+  const innerW = W - 2 * m, innerH = H - 2 * m;
+  const txt = String(cod);
+
+  const fRef   = H * .15;
+  const gap    = H * .045;
+  const colGap = W * .05;
+  const traco  = Math.max(.16, H * .018);
+
+  const qr = Math.max(2, Math.min(innerW * .52, innerH - fRef * 1.15 - gap));
+  const contH = qr + gap + fRef * 1.15;
+  const qrX = m, qrY = m + (innerH - contH) / 2;
+  const textY = qrY + qr + gap + fRef * .82;
+
+  /* coluna da direita: dois quadros de check, um em cima do outro */
+  const colX = qrX + qr + colGap;
+  const colW = Math.max(2, W - m - colX);
+  const lado = Math.max(1.5, Math.min(colW * .74, innerH * .40));
+  const vgap = lado * .34;
+  const cX   = colX + (colW - lado) / 2;
+  const cY1  = m + (innerH - (lado * 2 + vgap)) / 2;
+  const cY2  = cY1 + lado + vgap;
+
+  let q = null;
+  for(let t = 1; t <= 10 && !q; t++){
+    try{ const x = qrcode(t, 'M'); x.addData(txt); x.make(); q = x; }catch(e){}
+  }
+  const n = q ? q.getModuleCount() : 21;
+  let d = '';
+  if(q){
+    for(let r = 0; r < n; r++)
+      for(let c = 0; c < n; c++)
+        if(q.isDark(r, c)) d += 'M' + c + ' ' + r + 'h1v1h-1z';
+  }
+  const f = x => (+x).toFixed(2);
+  const quadro = y => '<rect x="' + f(cX) + '" y="' + f(y) + '" width="' + f(lado) + '" height="' + f(lado) +
+    '" rx="' + f(lado * .18) + '" fill="none" stroke="#0E110D" stroke-width="' + f(traco) + '"/>';
+
+  return '<svg viewBox="0 0 ' + f(W) + ' ' + f(H) + '" xmlns="http://www.w3.org/2000/svg">' +
+    '<rect x=".08" y=".08" width="' + f(W - .16) + '" height="' + f(H - .16) + '" rx="' + f(H * .07) +
+      '" fill="#fff" stroke="#C4CCD5" stroke-width=".16"/>' +
+    '<g transform="translate(' + f(qrX) + ',' + f(qrY) + ') scale(' + (qr / n).toFixed(4) + ')">' +
+      '<path d="' + d + '" fill="#0E110D"/></g>' +
+    '<text x="' + f(qrX + qr / 2) + '" y="' + f(textY) + '" text-anchor="middle" ' +
+      'font-family="Helvetica, Arial, sans-serif" font-size="' + f(fRef) + '" font-weight="700" ' +
+      'fill="#0E110D" letter-spacing=".04">' + txt + '</text>' +
+    quadro(cY1) + quadro(cY2) +
+    '</svg>';
+}
+
+function svgLoc(cod){
+  return modeloLoc === 'check' ? svgEtiquetaCheck(cod)
+       : modeloLoc === 'conceito' ? svgEtiquetaConceito(cod, escalaConceito, escalaConceitoA)
+       : svgEtiquetaLoc(cod);
+}
 
 const MAX_PREVIA = 60;
 
@@ -19261,9 +19319,7 @@ function desenharLoc(){
   const grade = $('locGrade');
   const conceito = modoConceito();
   const mostra = lista.slice(0, MAX_PREVIA);
-  grade.innerHTML = conceito
-    ? mostra.map(c => '<div class="loc-et">' + svgEtiquetaConceito(c, escalaConceito, escalaConceitoA) + '</div>').join('')
-    : mostra.map(c => '<div class="loc-et">' + svgEtiquetaLoc(c) + '</div>').join('');
+  grade.innerHTML = mostra.map(c => '<div class="loc-et">' + svgLoc(c) + '</div>').join('');
   $('locVazio').style.display = lista.length > MAX_PREVIA ? 'block' : 'none';
   $('locVazio').textContent = lista.length > MAX_PREVIA
     ? 'Mostrando as ' + MAX_PREVIA + ' primeiras. As ' + lista.length.toLocaleString('pt-BR') + ' entram no ZPL.'
@@ -19277,23 +19333,16 @@ function desenharLoc(){
   $('locSub').textContent = resumo + ' · ' + medida;
   $('locResumo').textContent = resumo;
   $('locFolha').innerHTML = conceito
-    ? 'Sai no tamanho real: <b>122 × 100 mm</b>, uma etiqueta por folha — mesmo formato da etiqueta maior de produto.'
-    : 'Sai no tamanho real: ' + medida + '. Deixe o driver da impressora com a página em <b>' +
-      larguraFolha().toFixed(1).replace('.0', '') + ' × ' + LOC.alt + ' mm</b>, senão a impressora corta ou desalinha.';
+    ? 'Página da impressora: <b>122 × 100 mm</b>.'
+    : 'Página da impressora: <b>' + larguraFolha().toFixed(1).replace('.0', '') +
+      ' × ' + LOC.alt + ' mm</b>.';
   $('locGrade').style.gridTemplateColumns = conceito ? 'repeat(2, 1fr)' : 'repeat(' + Math.min(3, LOC.cols) + ', 1fr)';
   $('grpTamanhoLoc').style.display = conceito ? 'block' : 'none';
   $('locAjustes').style.display = conceito ? 'none' : '';
   if(conceito) $('locConfig').style.display = 'none';
-  $('avisoTamLoc').textContent = (conceito && conceitoNoLimite)
-    ? 'Já está no tamanho máximo que cabe na folha de 122 × 100 mm.'
-    : '';
-  $('locModoHint').textContent = conceito
-    ? 'Título atual: LOJA CONCEITO — a etiqueta usa o layout de QR + número, 122 × 100 mm.'
-    : 'Título atual: ' + marcaAtual + '. Para usar o layout de QR + número (122 × 100 mm), troque o título para "LOJA CONCEITO" na aba Etiqueta de produtos.';
+  $('avisoTamLoc').textContent = (conceito && conceitoNoLimite) ? 'No máximo da folha.' : '';
   if(typeof abaAtual !== 'undefined' && abaAtual === 'local'){
-    $('subtitulo').textContent = conceito
-      ? 'Etiqueta de localização · Loja Conceito · 122 × 100 mm'
-      : 'Etiqueta de localização · ' + LOC.larg + ' × ' + LOC.alt + ' mm, ' + LOC.cols + (LOC.cols > 1 ? ' colunas' : ' coluna');
+    $('subtitulo').textContent = 'Etiqueta de localização · ' + medida;
   }
 }
 
@@ -19321,6 +19370,18 @@ async function abrirAjuste(painel, botao, espelho){
 }
 
 $('locAjustes').onclick = ()=>abrirAjuste('locConfig', 'locAjustes');
+
+function trocarModeloLoc(qual){
+  modeloLoc = qual;
+  $('mdPadrao').classList.toggle('on', qual === 'padrao');
+  $('mdCheck').classList.toggle('on', qual === 'check');
+  $('mdConceito').classList.toggle('on', qual === 'conceito');
+  if(qual === 'conceito'){ $('locConfig').style.display = 'none'; $('locAjustes').textContent = 'Ajustar o tamanho da etiqueta'; }
+  desenharLoc();
+}
+$('mdPadrao').onclick   = ()=>trocarModeloLoc('padrao');
+$('mdCheck').onclick    = ()=>trocarModeloLoc('check');
+$('mdConceito').onclick = ()=>trocarModeloLoc('conceito');
 
 ['cfgL', 'cfgA', 'cfgE', 'cfgC'].forEach(id=>{
   $(id).addEventListener('input', ()=>{
@@ -19366,14 +19427,14 @@ function montarFolhaLoc(){
   if(conceito){
     for(let i = 0; i < lista.length; i++){
       const et = '<div class="etLoc etConceito" style="width:122mm;height:100mm">' +
-        svgEtiquetaConceito(lista[i], escalaConceito, escalaConceitoA) + '</div>';
+        svgLoc(lista[i]) + '</div>';
       linhas.push('<div class="linhaLoc" style="width:122mm;height:100mm">' + et + '</div>');
     }
   }else{
     const estiloEt = 'width:' + LOC.larg + 'mm;height:' + LOC.alt + 'mm';
     for(let i = 0; i < lista.length; i += LOC.cols){
       const cols = lista.slice(i, i + LOC.cols)
-        .map(c => '<div class="etLoc" style="' + estiloEt + '">' + svgEtiquetaLoc(c) + '</div>').join('');
+        .map(c => '<div class="etLoc" style="' + estiloEt + '">' + svgLoc(c) + '</div>').join('');
       linhas.push('<div class="linhaLoc" style="width:' + larguraFolha() + 'mm;height:' + LOC.alt +
         'mm;gap:' + LOC.esp + 'mm">' + cols + '</div>');
     }
@@ -19573,7 +19634,7 @@ $('tpGrande').onclick  = ()=>trocarTipoProd('grande');
 $('tpPequena').onclick = ()=>trocarTipoProd('pequena');
 
 
-/* ================== títulos da etiqueta ================== */
+/* ================== filiais ================== */
 const KEY_TITULOS = 'tania_bulhoes_titulos_v1';
 const TITULOS_PADRAO = ['TANIA BULHÕES', 'CD OSASCO', 'LOJA CONCEITO', 'CDA', 'CD2'];
 let titulos = TITULOS_PADRAO.slice();
@@ -19602,38 +19663,38 @@ function listarTitulos(){
     '<div class="hv-user"><span class="titulo-nome">' + esc(t) + '</span>' +
     (t === marcaAtual ? '<span class="tag-adm">EM USO</span>' : '') +
     '<button class="btn" type="button" data-rmt="' + esc(t) + '">Remover</button></div>').join('')
-    || '<p class="hv-vazio">Nenhum título cadastrado.</p>';
+    || '<p class="hv-vazio">Nenhuma filial cadastrada.</p>';
 }
 
 $('tituloLista').addEventListener('click', async e=>{
   const b = e.target.closest('button'); if(!b || !b.dataset.rmt) return;
   const t = b.dataset.rmt, msg = $('tituloMsg');
   if(titulos.length <= 1){
-    msg.className = 'found err'; msg.textContent = 'Precisa sobrar pelo menos um título.';
+    msg.className = 'found err'; msg.textContent = 'Precisa sobrar pelo menos uma filial.';
     return;
   }
-  if(!await autorizarAdmin('Código de ADM para remover um título.')) return;
+  if(!await autorizarAdmin('Código de ADM para remover uma filial.')) return;
   titulos = titulos.filter(x => x !== t);
   await Dados.set(KEY_TITULOS, titulos);
   montarSelectTitulos(); listarTitulos();
-  msg.className = 'found'; msg.textContent = 'Título removido.';
-  await registrar('Removeu o título', t);
+  msg.className = 'found'; msg.textContent = 'Filial removida.';
+  await registrar('Removeu a filial', t);
 });
 
 $('tituloSalvar').onclick = async ()=>{
   const t = $('tituloNovo').value.trim().replace(/\s+/g, ' ').toUpperCase();
   const msg = $('tituloMsg');
-  if(!t){ msg.className = 'found err'; msg.textContent = 'Escreva o nome da unidade.'; return; }
+  if(!t){ msg.className = 'found err'; msg.textContent = 'Escreva o nome da filial.'; return; }
   if(titulos.some(x => norm(x) === norm(t))){
-    msg.className = 'found err'; msg.textContent = 'Esse título já está na lista.'; return;
+    msg.className = 'found err'; msg.textContent = 'Essa filial já está na lista.'; return;
   }
-  if(!await autorizarAdmin('Código de ADM para incluir um título.')) return;
+  if(!await autorizarAdmin('Código de ADM para incluir uma filial.')) return;
   titulos.push(t);
   await Dados.set(KEY_TITULOS, titulos);
   $('tituloNovo').value = '';
   montarSelectTitulos(); listarTitulos();
-  msg.className = 'found'; msg.textContent = 'Título incluído.';
-  await registrar('Incluiu o título', t);
+  msg.className = 'found'; msg.textContent = 'Filial incluída.';
+  await registrar('Incluiu a filial', t);
 };
 
 /* ================== aparência ================== */
@@ -19690,22 +19751,20 @@ function trocarAba(qual){
 $('abProd').onclick  = ()=>trocarAba('produtos');
 $('abLocal').onclick = ()=>trocarAba('local');
 
-/* ================== título da etiqueta ================== */
+/* ================== filial da etiqueta ================== */
 const KEY_MARCA = 'tania_bulhoes_marca_v1';
 
 function aplicarMarca(){
   marcaAtual = $('marcaSel').value;
   $('capBrand').textContent = marcaAtual;
   fitBrand();
-  /* LOJA CONCEITO troca também o layout da etiqueta de localização */
-  if(typeof desenharLoc === 'function' && $('locGrade')) desenharLoc();
 }
 
 let marcaAtual = 'TANIA BULHÕES';
 $('marcaSel').addEventListener('change', async ()=>{
   const nova = $('marcaSel').value;
   if(nova === marcaAtual) return;
-  if(!await autorizarAdmin('Código de ADM para trocar a unidade da etiqueta.')){
+  if(!await autorizarAdmin('Código de ADM para trocar a filial.')){
     $('marcaSel').value = marcaAtual;
     return;
   }
@@ -19713,7 +19772,7 @@ $('marcaSel').addEventListener('change', async ()=>{
   marcaAtual = nova;
   aplicarMarca();
   try{ localStorage.setItem(KEY_MARCA, nova); }catch(e){}
-  await registrar('Trocou a unidade da etiqueta de ' + esc(antes) + ' para', nova);
+  await registrar('Trocou a filial de ' + esc(antes) + ' para', nova);
 });
 
 /* ================== etiqueta ================== */
@@ -20415,7 +20474,6 @@ function montarArquivo(){
   doc.querySelectorAll('button[disabled]').forEach(bt=>{
     if(bt.id !== 'loteSel') bt.removeAttribute('disabled');
   });
-  g('exportar').textContent = 'Exportar arquivo';
   g('locImprimir').textContent = 'Imprimir etiquetas';
   g('salvar').textContent = 'Salvar na base';
   g('localView').classList.remove('on');
@@ -20466,29 +20524,6 @@ function montarArquivo(){
 
   return '<!doctype html>\n' + doc.outerHTML;
 }
-
-$('exportar').onclick = async ()=>{
-  const bt = $('exportar'), txt = 'Exportar arquivo';
-  bt.disabled = true; bt.textContent = 'Gerando…';
-  try{
-    const html = montarArquivo();
-    const hoje = new Date();
-    const carimbo = hoje.getFullYear() + '-' +
-      String(hoje.getMonth() + 1).padStart(2, '0') + '-' + String(hoje.getDate()).padStart(2, '0');
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([html], {type:'text/html;charset=utf-8'}));
-    a.download = 'Etiquetas_Tania_Bulhoes_' + carimbo + '.html';
-    a.click();
-    setTimeout(()=>URL.revokeObjectURL(a.href), 8000);
-    bt.textContent = 'Pronto!';
-    await registrar('Exportou o arquivo com', todos().size.toLocaleString('pt-BR') + ' produtos');
-  }catch(err){
-    bt.textContent = 'Não deu certo';
-  }finally{
-    bt.disabled = false;
-    setTimeout(()=>bt.textContent = txt, 2000);
-  }
-};
 
 $('histFiltro').addEventListener('input', listarHistorico);
 
