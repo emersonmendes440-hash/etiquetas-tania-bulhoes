@@ -275,8 +275,12 @@
   .folhaLoc{display:none}
   .linhaLoc{display:flex;overflow:hidden;break-inside:avoid}
   .etLoc{flex:none}
-  .etLoc svg{display:block;width:100%;height:100%}
-  .etLoc svg rect:first-of-type{stroke:none}
+  .etLoc svg{display:block;width:100%;height:100%;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  /* nas etiquetas 30 x 20 o retângulo de fora é só uma guia de tela e não deve
+     sair impresso — mas na Loja Conceito ele É a moldura, então fica de fora
+     desta regra (era por isso que a margem não vinha na impressão) */
+  .etLoc:not(.etConceito) svg rect:first-of-type{stroke:none}
 
   /* ---------- prévia das etiquetas de localização ---------- */
   .loc-grade{
@@ -1201,7 +1205,7 @@
           <button type="button" id="maisLCA" aria-label="Aumentar altura">+</button>
         </div>
         <input type="range" id="escalaLCARange" min="20" max="200" step="1" value="100">
-        <p class="hint">Ajusta o tamanho do QR code e do número dentro da etiqueta de 122 × 100 mm.</p>
+        <p class="hint">Aumenta ou reduz a arte inteira — moldura, QR code e número juntos — dentro da folha de 122 × 100 mm. <b>Altura</b> alonga ou encurta só a moldura.</p>
         <p class="found" id="avisoTamLoc"></p>
         <button class="btn wide" type="button" id="resetLC" style="margin-top:10px">Voltar para 100%</button>
       </div>
@@ -19185,34 +19189,46 @@ function svgEtiquetaLoc(cod){
 let conceitoNoLimite = false;
 
 function svgEtiquetaConceito(cod, escG, escA){
-  const W = 122, H = 100;
+  const W = 122, H = 100;                      /* folha, igual à etiqueta maior */
   const eg = Math.max(.2, (escG || 100) / 100);
   const ea = Math.max(.2, (escA || 100) / 100);
-  const m  = 4;                                   /* moldura até a borda da etiqueta */
-  const rx = 8;
-  const padIn = 10;                                /* respiro da moldura até o conteúdo */
-  const areaW = W - 2 * m - 2 * padIn;
-  const areaH = H - 2 * m - 2 * padIn;
+
+  /* A moldura, o QR e o número são um conjunto só: mexer no tamanho aumenta ou
+     reduz os três juntos, mantendo a margem proporcional em volta. O limite é a
+     própria folha — a arte nunca encosta na borda do papel. */
+  const baseW = W - 8, baseH = H - 8;          /* moldura a 4 mm da borda em 100% */
+  const maxW  = W - 4, maxH  = H - 4;          /* folga mínima de 2 mm até o papel */
+
+  let fw = baseW * eg;
+  let fh = baseH * eg * ea;
+  conceitoNoLimite = (fw > maxW + .01) || (fh > maxH + .01);
+  fw = Math.min(fw, maxW);
+  fh = Math.min(fh, maxH);
+
+  const k  = fw / baseW;                       /* o quanto a arte cresceu/encolheu */
+  const fx = (W - fw) / 2, fy = (H - fh) / 2;  /* moldura sempre centrada */
+  const rx = 8 * k;
+  const traco = Math.max(.45, .9 * k);         /* a espessura acompanha o tamanho */
+
+  const padIn = 10 * k;                        /* respiro da moldura até o conteúdo */
+  const areaW = Math.max(4, fw - 2 * padIn);
+  const areaH = Math.max(4, fh - 2 * padIn);
+
   const txt  = String(cod);
-  const gap  = 6 * ea;
+  const gap  = 6 * k;
+  /* o número encolhe para caber na largura e o QR para na altura que sobra —
+     nada invade a moldura, em nenhum tamanho */
+  const fRef = Math.min(13 * k, areaW / (.62 * Math.max(4, txt.length)));
+  const qr   = Math.max(2, Math.min(areaW, areaH * .70, areaH - gap - fRef * 1.1));
 
-  /* nada pode invadir a moldura preta: o número encolhe para caber na largura e
-     o QR para na altura que sobra — por isso a etiqueta nunca sai deformada */
-  const fRef = Math.min(13 * eg * ea, areaW / (.62 * Math.max(4, txt.length)));
-  let qr = Math.min(areaW, areaH * .70) * eg;      /* lado do QR */
-  const qrMax = Math.min(areaW, areaH - gap - fRef * 1.1);
-  conceitoNoLimite = qr > qrMax + .01;
-  if(conceitoNoLimite) qr = qrMax;
-
-  const contH = qr + gap + fRef * 1.1;
-  const startY = m + padIn + (areaH - contH) / 2;
-  const qrX = (W - qr) / 2;
-  const qrY = startY;
-  const textY = qrY + qr + gap + fRef * .85;
+  const contH  = qr + gap + fRef * 1.1;
+  const qrY    = fy + padIn + (areaH - contH) / 2;
+  const qrX    = (W - qr) / 2;
+  const textY  = qrY + qr + gap + fRef * .85;
 
   let q = null;
   for(let t = 1; t <= 12 && !q; t++){
-    try{ const x = qrcode(t, 'M'); x.addData(String(cod)); x.make(); q = x; }catch(e){}
+    try{ const x = qrcode(t, 'M'); x.addData(txt); x.make(); q = x; }catch(e){}
   }
   const n = q ? q.getModuleCount() : 21;
   let d = '';
@@ -19224,12 +19240,13 @@ function svgEtiquetaConceito(cod, escG, escA){
   const f = x => (+x).toFixed(2);
 
   return '<svg viewBox="0 0 ' + f(W) + ' ' + f(H) + '" xmlns="http://www.w3.org/2000/svg">' +
-    '<rect x="' + f(m) + '" y="' + f(m) + '" width="' + f(W - 2 * m) + '" height="' + f(H - 2 * m) + '" rx="' + f(rx) +
-      '" fill="#fff" stroke="#000" stroke-width=".9"/>' +
+    '<rect width="' + f(W) + '" height="' + f(H) + '" fill="#fff"/>' +
+    '<rect class="mold" x="' + f(fx) + '" y="' + f(fy) + '" width="' + f(fw) + '" height="' + f(fh) +
+      '" rx="' + f(rx) + '" fill="#fff" stroke="#000" stroke-width="' + f(traco) + '"/>' +
     '<g transform="translate(' + f(qrX) + ',' + f(qrY) + ') scale(' + (qr / n).toFixed(4) + ')">' +
-      '<path d="' + d + '" fill="#0E110D"/></g>' +
+      '<path d="' + d + '" fill="#000"/></g>' +
     '<text x="' + f(W / 2) + '" y="' + f(textY) + '" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" ' +
-      'font-size="' + f(fRef) + '" font-weight="700" fill="#0E110D" letter-spacing=".06">' + cod + '</text>' +
+      'font-size="' + f(fRef) + '" font-weight="700" fill="#000" letter-spacing=".06">' + txt + '</text>' +
     '</svg>';
 }
 
@@ -19268,7 +19285,7 @@ function desenharLoc(){
   $('locAjustes').style.display = conceito ? 'none' : '';
   if(conceito) $('locConfig').style.display = 'none';
   $('avisoTamLoc').textContent = (conceito && conceitoNoLimite)
-    ? 'Já está no tamanho máximo que cabe dentro da margem da etiqueta.'
+    ? 'Já está no tamanho máximo que cabe na folha de 122 × 100 mm.'
     : '';
   $('locModoHint').textContent = conceito
     ? 'Título atual: LOJA CONCEITO — a etiqueta usa o layout de QR + número, 122 × 100 mm.'
@@ -19348,7 +19365,7 @@ function montarFolhaLoc(){
   const linhas = [];
   if(conceito){
     for(let i = 0; i < lista.length; i++){
-      const et = '<div class="etLoc" style="width:122mm;height:100mm">' +
+      const et = '<div class="etLoc etConceito" style="width:122mm;height:100mm">' +
         svgEtiquetaConceito(lista[i], escalaConceito, escalaConceitoA) + '</div>';
       linhas.push('<div class="linhaLoc" style="width:122mm;height:100mm">' + et + '</div>');
     }
