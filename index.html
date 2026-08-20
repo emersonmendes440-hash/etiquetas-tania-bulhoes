@@ -928,6 +928,25 @@ body.tb-entrou #loginScreen{opacity:0;transform:translateY(-16px);filter:blur(8p
     });
   }
 
+  /* Redefinição de senha.
+     O link volta para o sistema de onde o pedido saiu (Etiquetas, Protocolo ou
+     Transportadora) — é o que diferencia os três, já que os três dividem o mesmo
+     projeto do Firebase. Se este endereço ainda não estiver liberado na lista de
+     domínios autorizados do Firebase, manda sem o retorno automático em vez de
+     falhar. */
+  function enviarReset(email){
+    const volta = { url: location.origin + location.pathname, handleCodeInApp: false };
+    return comLimite(sendPasswordResetEmail(auth, email, volta), LIMITE_LOGIN)
+      .catch((err)=>{
+        const c = err && err.code;
+        if(c === 'auth/unauthorized-continue-uri' || c === 'auth/invalid-continue-uri'){
+          console.warn('[login] domínio não autorizado no Firebase — enviando sem retorno automático');
+          return comLimite(sendPasswordResetEmail(auth, email), LIMITE_LOGIN);
+        }
+        throw err;
+      });
+  }
+
   if(forgotBtn){
     forgotBtn.addEventListener('click', async ()=>{
       const email = ($$('loginEmail').value || '').trim();
@@ -940,8 +959,9 @@ body.tb-entrou #loginScreen{opacity:0;transform:translateY(-16px);filter:blur(8p
       forgotBtn.disabled = true;
       forgotBtn.textContent = 'Enviando...';
       try{
-        await comLimite(sendPasswordResetEmail(auth, email), LIMITE_LOGIN);
-        aviso('Enviamos um link de redefinição para ' + email + '.', 'bom');
+        await enviarReset(email);
+        aviso('Link de redefinição enviado para ' + email + '. Se não aparecer em alguns minutos, '
+              + 'procure no lixo eletrônico.', 'bom');
       }catch(err){
         const code = err && err.code;
         if(code === 'app/timeout' || code === 'auth/network-request-failed'){
